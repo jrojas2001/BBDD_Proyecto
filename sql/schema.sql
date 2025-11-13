@@ -5,7 +5,7 @@ CREATE TABLE usuarios (
     rut VARCHAR(12) UNIQUE NOT NULL,
     correo_electronico VARCHAR(150) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-   id_rol integer not null
+   	id_rol integer not null
 );
 
 
@@ -48,14 +48,12 @@ CREATE TABLE receta_etapa (
 );
 
 
+
+
 CREATE TABLE categorias_ingrediente (
     id_categoria SERIAL PRIMARY KEY,
     nombre_categoria VARCHAR(50) NOT NULL UNIQUE
-    id_ingrediente
 );
-
-
-
 
 CREATE TABLE ingredientes (
     id_ingrediente SERIAL PRIMARY KEY,
@@ -65,6 +63,9 @@ CREATE TABLE ingredientes (
     id_categoria INT NOT NULL,
     FOREIGN KEY (id_categoria) REFERENCES categorias_ingrediente(id_categoria)
 );
+
+
+
 
 
 
