@@ -28,7 +28,7 @@ CREATE TABLE recetas (
     tiempo_preparacion_minutos INT,
     porciones INT,
     detalle_montaje TEXT,
-    Calorias Integer, -- FUERA
+    Total_calorias Integer, -- FUERA
     justificacion_tecnica TEXT,
     justificacion_comercial TEXT,
     usuario_id INT NOT NULL,
