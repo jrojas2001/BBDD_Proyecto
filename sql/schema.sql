@@ -1,3 +1,11 @@
+-- CREAR TABLA ROL
+
+CREATE TABLE ROL (
+	id_rol SERIAL PRIMARY KEY,
+	nombre_rol VARCHAR(50)
+);
+
+
 CREATE TABLE usuarios (
     usuario_id SERIAL PRIMARY KEY,
     nombre VARCHAR(50),
@@ -5,7 +13,8 @@ CREATE TABLE usuarios (
     rut VARCHAR(12) UNIQUE NOT NULL,
     correo_electronico VARCHAR(150) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-   	id_rol integer not null
+	id_rol INT NOT NULL,
+   	FOREIGN KEY (id_rol) REFERENCES ROL(id_rol)
 );
 
 
@@ -94,7 +103,7 @@ CREATE TABLE etapa_ingrediente (
 
 CREATE TABLE TECNICA (
 	id_tecnica SERIAL PRIMARY KEY,
-	nombre_tecnica VARCHAR,
+	nombre_tecnica VARCHAR(100),
 	descripcion TEXT
 );
 
