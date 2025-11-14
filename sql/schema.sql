@@ -28,7 +28,7 @@ CREATE TABLE recetas (
     tiempo_preparacion_minutos INT,
     porciones INT,
     detalle_montaje TEXT,
-    Calorias Integer,
+    Calorias Integer, -- FUERA
     justificacion_tecnica TEXT,
     justificacion_comercial TEXT,
     usuario_id INT NOT NULL,
@@ -69,6 +69,7 @@ CREATE TABLE ingredientes (
     nombre VARCHAR(100) NOT NULL,
     unidad VARCHAR(20) NOT NULL,
     precio_unitario DECIMAL(10,2) NOT NULL,
+	calorias INTEGER,
     id_categoria INT NOT NULL,
     FOREIGN KEY (id_categoria) REFERENCES categorias_ingrediente(id_categoria)
 );
@@ -118,6 +119,7 @@ CREATE TABLE RECETA_TECNICA
 	
 );
 
+-- Fuera
 CREATE TABLE UTENSILIOS
 (
 	ID_UTENSILIO SERIAL PRIMARY KEY,
@@ -125,6 +127,7 @@ CREATE TABLE UTENSILIOS
 	Descripcion TEXT
 );
 
+-- FUERA
 CREATE TABLE receta_utensilios
 (
 	ID_UTENSILIO INT NOT NULL,
@@ -136,6 +139,7 @@ CREATE TABLE receta_utensilios
 	
 );
 
+-- FUERA
 CREATE TABLE PUNTOS_CRITICOS
 (
 	ID_PUNTOCRITICO SERIAL PRIMARY KEY,
@@ -143,6 +147,8 @@ CREATE TABLE PUNTOS_CRITICOS
 	Detalle TEXT
 
 );
+
+-- FUERA
 
 CREATE TABLE receta_puntoscriticos
 (
