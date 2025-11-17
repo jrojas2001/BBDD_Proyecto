@@ -28,7 +28,6 @@ CREATE TABLE recetas (
     tiempo_preparacion_minutos INT,
     porciones INT,
     detalle_montaje TEXT,
-    Total_calorias Integer, -- FUERA
     justificacion_tecnica TEXT,
     justificacion_comercial TEXT,
     usuario_id INT NOT NULL,
@@ -51,7 +50,6 @@ CREATE TABLE receta_etapa (
     id_receta INT NOT NULL,
     id_etapa INT NOT NULL,
     orden_etapa INT, -- para definir el orden dentro de la receta
-    PRIMARY KEY (id_receta, id_etapa),
     FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
     FOREIGN KEY (id_etapa) REFERENCES etapas(id_etapa)
 );
@@ -74,16 +72,12 @@ CREATE TABLE ingredientes (
     FOREIGN KEY (id_categoria) REFERENCES categorias_ingrediente(id_categoria)
 );
 
-
-
-
-
+-- Lista de ingredientes de la receta
 
 CREATE TABLE receta_ingrediente (
     id_receta INT NOT NULL,
     id_ingrediente INT NOT NULL,
     cantidad_total DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id_receta, id_ingrediente),
     FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
     FOREIGN KEY (id_ingrediente) REFERENCES ingredientes(id_ingrediente)
 );
@@ -96,7 +90,6 @@ CREATE TABLE etapa_ingrediente (
     id_etapa INT NOT NULL,
     id_ingrediente INT NOT NULL,
     cantidad_etapa DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id_etapa, id_ingrediente),
     FOREIGN KEY (id_etapa) REFERENCES etapas(id_etapa),
     FOREIGN KEY (id_ingrediente) REFERENCES ingredientes(id_ingrediente)
 );
@@ -112,50 +105,9 @@ CREATE TABLE RECETA_TECNICA
 (
 	id_receta INT NOT NULL,
 	id_tecnica INT NOT NULL,
-	PRIMARY KEY (id_receta,id_tecnica),
 	FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
     	FOREIGN KEY (id_tecnica) REFERENCES TECNICA(id_tecnica)
 	
 	
 );
 
--- Fuera
-CREATE TABLE UTENSILIOS
-(
-	ID_UTENSILIO SERIAL PRIMARY KEY,
-	Nombre VARCHAR(100),
-	Descripcion TEXT
-);
-
--- FUERA
-CREATE TABLE receta_utensilios
-(
-	ID_UTENSILIO INT NOT NULL,
-	id_receta INT NOT NULL,
-        PRIMARY KEY (ID_UTENSILIO,id_receta),
-	FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
-    	FOREIGN KEY (ID_UTENSILIO) REFERENCES UTENSILIOS(ID_UTENSILIO)
-	
-	
-);
-
--- FUERA
-CREATE TABLE PUNTOS_CRITICOS
-(
-	ID_PUNTOCRITICO SERIAL PRIMARY KEY,
-	Nombre VARCHAR(100),
-	Detalle TEXT
-
-);
-
--- FUERA
-
-CREATE TABLE receta_puntoscriticos
-(
-	ID_PUNTOCRITICO INT NOT NULL,
-	id_receta INT NOT NULL,
-        PRIMARY KEY (ID_PUNTOCRITICO,id_receta),
-	FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
-    	FOREIGN KEY (ID_PUNTOCRITICO) REFERENCES PUNTOS_CRITICOS(ID_PUNTOCRITICO)
-
-);
