@@ -1,3 +1,5 @@
+-- AGREGAR TABLA USUARIO_ROL
+
 -- CREAR TABLA ROL
 
 CREATE TABLE ROL (
@@ -21,6 +23,7 @@ CREATE TABLE usuarios (
 
 -- Cambiar el campo nombre por RUT
 
+-- Añadir el semestre que le corresponde a la receta
 CREATE TABLE recetas (
     id_receta SERIAL PRIMARY KEY,
     nombre_receta VARCHAR(100) NOT NULL,
@@ -62,6 +65,9 @@ CREATE TABLE categorias_ingrediente (
     nombre_categoria VARCHAR(50) NOT NULL UNIQUE
 );
 
+-- AGREGAR TABLA UNIDAD_RECETA
+-- AGREGAR TIEMPO DE COCCIÓN INGREDIENTE
+-- AGREGAR TIPO DE INGREDIENTE
 CREATE TABLE ingredientes (
     id_ingrediente SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -80,7 +86,7 @@ CREATE TABLE receta_ingrediente (
     cantidad_total DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
     FOREIGN KEY (id_ingrediente) REFERENCES ingredientes(id_ingrediente)
-);
+); -- BORRAR
 
 
 -- Lista de ingredientes de la etapa
@@ -92,7 +98,7 @@ CREATE TABLE etapa_ingrediente (
     cantidad_etapa DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_etapa) REFERENCES etapas(id_etapa),
     FOREIGN KEY (id_ingrediente) REFERENCES ingredientes(id_ingrediente)
-);
+); -- DETALLES DE LA ETAPA E INGREDIENTE (INGREDIENTES, CANTIDAD, TIEMPO, TIEMPO_COCCION, CATEGORIA, SUBCATEGORIA, TIPO_COCCION, SUBTIPO DE COCCION)
 
 
 CREATE TABLE TECNICA (
